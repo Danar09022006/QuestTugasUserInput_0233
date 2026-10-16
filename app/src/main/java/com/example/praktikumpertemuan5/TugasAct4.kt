@@ -1,5 +1,9 @@
 package com.example.praktikumpertemuan5
 
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -49,8 +53,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import com.example.praktikumpertemuan5.ui.theme.PraktikumPertemuan5Theme
 import kotlinx.coroutines.delay
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -58,8 +64,21 @@ import java.util.Locale
 import java.util.TimeZone
 import kotlin.time.Duration.Companion.seconds
 
+class TugasAct4 : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            PraktikumPertemuan5Theme {
+                TugasAct4Screen()
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TugasAct4Screen(modifier: Modifier) {
+fun TugasAct4Screen(modifier: Modifier = Modifier) {
     // State variables for form fields and dialog visibility
     var namaDepan by remember { mutableStateOf("") }
     var namaBelakang by remember { mutableStateOf("") }
@@ -83,7 +102,7 @@ fun TugasAct4Screen(modifier: Modifier) {
         listOf(expPemula, expMenengah, expAhli)
     }
 
-
+    // Auto dismiss pop up dialog after 5 seconds
     LaunchedEffect(showDialog) {
         if (showDialog) {
             delay(5.seconds)
@@ -91,6 +110,7 @@ fun TugasAct4Screen(modifier: Modifier) {
         }
     }
 
+    // DatePickerDialog to select date
     if (showDatePicker) {
         DatePickerDialog(
             onDismissRequest = { showDatePicker = false },
@@ -119,7 +139,7 @@ fun TugasAct4Screen(modifier: Modifier) {
     }
 
     Scaffold(
-        modifier = Modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize()
     ) { innerPadding ->
         // Root container for Scaffold content
         Box(
@@ -127,7 +147,7 @@ fun TugasAct4Screen(modifier: Modifier) {
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-
+            // Header Image background at the top of Scaffold
             Image(
                 painter = painterResource(id = R.drawable.bg_tampilan),
                 contentDescription = stringResource(id = R.string.desc_header_bg),
@@ -136,6 +156,7 @@ fun TugasAct4Screen(modifier: Modifier) {
                     .height(dimensionResource(id = R.dimen.header_height)),
                 contentScale = ContentScale.Crop
             )
+
             // Floating Box component floating on top of Scaffold background
             Surface(
                 modifier = Modifier
@@ -163,6 +184,7 @@ fun TugasAct4Screen(modifier: Modifier) {
                         color = colorResource(id = R.color.purple_title),
                         textAlign = TextAlign.Center
                     )
+
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.margin_extra_small)))
 
                     // Form Subtitle
@@ -172,20 +194,21 @@ fun TugasAct4Screen(modifier: Modifier) {
                         color = colorResource(id = R.color.gray_subtitle),
                         textAlign = TextAlign.Center
                     )
+
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.margin_large)))
 
-
+                    // Field corner shape & textFieldColors
                     val fieldShape = RoundedCornerShape(dimensionResource(id = R.dimen.input_corner_radius))
                     val textFieldColors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = colorResource(id = R.color.purple_title),
                         unfocusedBorderColor = colorResource(id = R.color.gray_border)
                     )
+
                     // Row 1: Nama Depan & Nama Belakang
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.spacing_between_fields))
-                    )
-                    {
+                    ) {
                         OutlinedTextField(
                             value = namaDepan,
                             onValueChange = { namaDepan = it },
@@ -206,6 +229,7 @@ fun TugasAct4Screen(modifier: Modifier) {
                             singleLine = true
                         )
                     }
+
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_between_fields)))
 
                     // Row 2: Email
@@ -218,14 +242,14 @@ fun TugasAct4Screen(modifier: Modifier) {
                         colors = textFieldColors,
                         singleLine = true
                     )
+
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_between_fields)))
 
                     // Row 3: Tgl Lahir & Experience
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.spacing_between_fields))
-                    )
-                    {
+                    ) {
                         // Tgl Lahir (Clickable Field to open DatePicker)
                         Box(
                             modifier = Modifier
@@ -254,6 +278,7 @@ fun TugasAct4Screen(modifier: Modifier) {
                                 singleLine = true
                             )
                         }
+
                         // Experience (Dropdown Selection)
                         Box(
                             modifier = Modifier
@@ -297,140 +322,240 @@ fun TugasAct4Screen(modifier: Modifier) {
                                 }
                             }
                         }
-                        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_between_sections)))
+                    }
 
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_between_sections)))
 
-                        Text(
-                            text = stringResource(id = R.string.label_pilih_skill),
-                            fontSize = dimensionResource(id = R.dimen.text_size_label).value.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = colorResource(id = R.color.text_black),
-                            modifier = Modifier.align(Alignment.Start)
-                        )
-                        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.margin_small)))
+                    // Label: Pilih Skill Anda :
+                    Text(
+                        text = stringResource(id = R.string.label_pilih_skill),
+                        fontSize = dimensionResource(id = R.dimen.text_size_label).value.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = colorResource(id = R.color.text_black),
+                        modifier = Modifier.align(Alignment.Start)
+                    )
 
-                        // Checkboxes Row: Android, UI/UX, Web
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.margin_small)))
+
+                    // Checkboxes Row: Android, UI/UX, Web
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Start
+                    ) {
+                        // Skill 1: Android
                         Row(
-                            modifier = Modifier.fillMaxWidth(),
                             verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.Start
-                        )   {
-
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                modifier = Modifier.weight(1f)
-                            ) {
-                                Checkbox(
-                                    checked = isAndroidSelected,
-                                    onCheckedChange = { isAndroidSelected = it },
-                                    colors = CheckboxDefaults.colors(
-                                        checkedColor = colorResource(id = R.color.purple_title)
-                                    )
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Checkbox(
+                                checked = isAndroidSelected,
+                                onCheckedChange = { isAndroidSelected = it },
+                                colors = CheckboxDefaults.colors(
+                                    checkedColor = colorResource(id = R.color.purple_title)
                                 )
-                                Text(
-                                    text = stringResource(id = R.string.skill_android),
-                                    fontSize = dimensionResource(id = R.dimen.text_size_subtitle).value.sp,
-                                    color = colorResource(id = R.color.text_dark_gray)
-                                )
-                            }
-
-                            // Skill 2: UI/UX
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                modifier = Modifier.weight(1f)
-                            ) {
-                                Checkbox(
-                                    checked = isUiUxSelected,
-                                    onCheckedChange = { isUiUxSelected = it },
-                                    colors = CheckboxDefaults.colors(
-                                        checkedColor = colorResource(id = R.color.purple_title)
-                                    )
-                                )
-                                Text(
-                                    text = stringResource(id = R.string.skill_uiux),
-                                    fontSize = dimensionResource(id = R.dimen.text_size_subtitle).value.sp,
-                                    color = colorResource(id = R.color.text_dark_gray)
-                                )
-                            }
-                            // Skill 3: Web
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                modifier = Modifier.weight(1f)
-                            ) {
-                                Checkbox(
-                                    checked = isWebSelected,
-                                    onCheckedChange = { isWebSelected = it },
-                                    colors = CheckboxDefaults.colors(
-                                        checkedColor = colorResource(id = R.color.purple_title)
-                                    )
-                                )
-                                Text(
-                                    text = stringResource(id = R.string.skill_web),
-                                    fontSize = dimensionResource(id = R.dimen.text_size_subtitle).value.sp,
-                                    color = colorResource(id = R.color.text_dark_gray)
-                                )
-                            }
+                            )
+                            Text(
+                                text = stringResource(id = R.string.skill_android),
+                                fontSize = dimensionResource(id = R.dimen.text_size_subtitle).value.sp,
+                                color = colorResource(id = R.color.text_dark_gray)
+                            )
                         }
 
-                        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.margin_large)))
-                        Button(
-                            onClick = { showDialog = true },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(dimensionResource(id = R.dimen.button_height)),
-                            shape = RoundedCornerShape(dimensionResource(id = R.dimen.button_corner_radius)),
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = colorResource(id = R.color.gray_button_bg),
-                                contentColor = colorResource(id = R.color.gray_button_text)
-                            )
+                        // Skill 2: UI/UX
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.weight(1f)
                         ) {
+                            Checkbox(
+                                checked = isUiUxSelected,
+                                onCheckedChange = { isUiUxSelected = it },
+                                colors = CheckboxDefaults.colors(
+                                    checkedColor = colorResource(id = R.color.purple_title)
+                                )
+                            )
                             Text(
-                                text = stringResource(id = R.string.btn_proceed),
-                                fontSize = dimensionResource(id = R.dimen.text_size_button).value.sp,
-                                fontWeight = FontWeight.Bold
+                                text = stringResource(id = R.string.skill_uiux),
+                                fontSize = dimensionResource(id = R.dimen.text_size_subtitle).value.sp,
+                                color = colorResource(id = R.color.text_dark_gray)
+                            )
+                        }
+
+                        // Skill 3: Web
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Checkbox(
+                                checked = isWebSelected,
+                                onCheckedChange = { isWebSelected = it },
+                                colors = CheckboxDefaults.colors(
+                                    checkedColor = colorResource(id = R.color.purple_title)
+                                )
+                            )
+                            Text(
+                                text = stringResource(id = R.string.skill_web),
+                                fontSize = dimensionResource(id = R.dimen.text_size_subtitle).value.sp,
+                                color = colorResource(id = R.color.text_dark_gray)
+                            )
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.margin_large)))
+
+                    // Proceed Button
+                    Button(
+                        onClick = { showDialog = true },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(dimensionResource(id = R.dimen.button_height)),
+                        shape = RoundedCornerShape(dimensionResource(id = R.dimen.button_corner_radius)),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = colorResource(id = R.color.gray_button_bg),
+                            contentColor = colorResource(id = R.color.gray_button_text)
+                        )
+                    ) {
+                        Text(
+                            text = stringResource(id = R.string.btn_proceed),
+                            fontSize = dimensionResource(id = R.dimen.text_size_button).value.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+            }
+        }
+
+        // Preview Pop Up Dialog with Black Background (Auto dismiss in 5 seconds, No Close Button)
+        if (showDialog) {
+            Dialog(
+                onDismissRequest = { showDialog = false }
+            ) {
+                Surface(
+                    shape = RoundedCornerShape(dimensionResource(id = R.dimen.input_corner_radius)),
+                    color = colorResource(id = R.color.black),
+                    shadowElevation = dimensionResource(id = R.dimen.card_elevation)
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(dimensionResource(id = R.dimen.card_padding)),
+                        horizontalAlignment = Alignment.Start
+                    ) {
+                        // Title
+                        Text(
+                            text = stringResource(id = R.string.dialog_title),
+                            fontSize = dimensionResource(id = R.dimen.text_size_title).value.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = colorResource(id = R.color.purple_200)
+                        )
+
+                        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.margin_medium)))
+
+                        // Nama Lengkap (Label & Value horizontally aligned in a Row)
+                        val namaLengkap = "$namaDepan $namaBelakang".trim()
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Text(
+                                text = stringResource(id = R.string.label_nama_lengkap),
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.white),
+                                fontSize = dimensionResource(id = R.dimen.text_size_label).value.sp
+                            )
+                            Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen.margin_small)))
+                            Text(
+                                text = namaLengkap.ifEmpty { stringResource(id = R.string.skill_none) },
+                                color = colorResource(id = R.color.white),
+                                fontSize = dimensionResource(id = R.dimen.text_size_input).value.sp
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.margin_small)))
+
+                        // Email (Label & Value horizontally aligned in a Row)
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Text(
+                                text = stringResource(id = R.string.label_email),
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.white),
+                                fontSize = dimensionResource(id = R.dimen.text_size_label).value.sp
+                            )
+                            Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen.margin_small)))
+                            Text(
+                                text = email.ifEmpty { stringResource(id = R.string.skill_none) },
+                                color = colorResource(id = R.color.white),
+                                fontSize = dimensionResource(id = R.dimen.text_size_input).value.sp
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.margin_small)))
+
+                        // Tanggal Lahir (Label & Value horizontally aligned in a Row)
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Text(
+                                text = stringResource(id = R.string.label_tgl_lahir),
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.white),
+                                fontSize = dimensionResource(id = R.dimen.text_size_label).value.sp
+                            )
+                            Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen.margin_small)))
+                            Text(
+                                text = tglLahir.ifEmpty { stringResource(id = R.string.skill_none) },
+                                color = colorResource(id = R.color.white),
+                                fontSize = dimensionResource(id = R.dimen.text_size_input).value.sp
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.margin_small)))
+
+                        // Experience (Label & Value horizontally aligned in a Row)
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Text(
+                                text = stringResource(id = R.string.label_experience),
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.white),
+                                fontSize = dimensionResource(id = R.dimen.text_size_label).value.sp
+                            )
+                            Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen.margin_small)))
+                            Text(
+                                text = experience.ifEmpty { stringResource(id = R.string.skill_none) },
+                                color = colorResource(id = R.color.white),
+                                fontSize = dimensionResource(id = R.dimen.text_size_input).value.sp
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.margin_small)))
+
+                        // Skill Anda (Label & Value horizontally aligned in a Row)
+                        val selectedSkills = mutableListOf<String>()
+                        if (isAndroidSelected) selectedSkills.add(stringResource(id = R.string.skill_android))
+                        if (isUiUxSelected) selectedSkills.add(stringResource(id = R.string.skill_uiux))
+                        if (isWebSelected) selectedSkills.add(stringResource(id = R.string.skill_web))
+                        val skillText = if (selectedSkills.isNotEmpty()) selectedSkills.joinToString(", ") else stringResource(id = R.string.skill_none)
+
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Text(
+                                text = stringResource(id = R.string.label_skill_result),
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.white),
+                                fontSize = dimensionResource(id = R.dimen.text_size_label).value.sp
+                            )
+                            Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen.margin_small)))
+                            Text(
+                                text = skillText,
+                                color = colorResource(id = R.color.white),
+                                fontSize = dimensionResource(id = R.dimen.text_size_input).value.sp
                             )
                         }
                     }
                 }
             }
-
-            Button(
-                onClick = { showDialog = true },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(dimensionResource(id = R.dimen.button_height)),
-                shape = RoundedCornerShape(dimensionResource(id = R.dimen.button_corner_radius)),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = colorResource(id = R.color.gray_button_bg),
-                    contentColor = colorResource(id = R.color.gray_button_text)
-                )
-            ) {
-                Text(
-                    text = stringResource(id = R.string.btn_proceed),
-                    fontSize = dimensionResource(id = R.dimen.text_size_button).value.sp,
-                    fontWeight = FontWeight.Bold
-                )
-            }
         }
     }
 }
 
-val namaLengkap = "$namaDepan $namaBelakang".trim()
-Row(verticalAlignment = Alignment.CenterVertically) {
-    Text(
-        text = stringResource(id = R.string.label_nama_lengkap),
-        fontWeight = FontWeight.Bold,
-        color = colorResource(id = R.color.white),
-        fontSize = dimensionResource(id = R.dimen.text_size_label).value.sp
-    )
-    Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen.margin_small)))
-    Text(
-        text = namaLengkap.ifEmpty { stringResource(id = R.string.skill_none) },
-        color = colorResource(id = R.color.white),
-        fontSize = dimensionResource(id = R.dimen.text_size_input).value.sp
-    )
+@Preview(showBackground = true)
+@Composable
+fun TugasAct4Preview() {
+    PraktikumPertemuan5Theme {
+        TugasAct4Screen()
+    }
 }
-
-Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.margin_small)))
-
-
