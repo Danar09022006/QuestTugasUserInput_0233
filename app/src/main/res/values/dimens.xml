@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_none">0dp</dimen>
+    <dimen name="margin_extra_small">4dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_extra_large">32dp</dimen>
+
+    <dimen name="header_height">240dp</dimen>
+    <dimen name="card_top_offset">170dp</dimen>
+    <dimen name="card_corner_top">32dp</dimen>
+    <dimen name="card_padding">24dp</dimen>
+    <dimen name="card_elevation">8dp</dimen>
+
+    <dimen name="input_corner_radius">16dp</dimen>
+    <dimen name="button_corner_radius">12dp</dimen>
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="spacing_between_fields">12dp</dimen>
+    <dimen name="spacing_between_sections">16dp</dimen>
+
+    <dimen name="text_size_title">24sp</dimen>
+    <dimen name="text_size_subtitle">12sp</dimen>
+    <dimen name="text_size_label">14sp</dimen>
+    <dimen name="text_size_input">14sp</dimen>
+    <dimen name="text_size_button">16sp</dimen>
+</resources>
