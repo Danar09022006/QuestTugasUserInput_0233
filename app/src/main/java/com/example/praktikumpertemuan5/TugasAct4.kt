@@ -253,6 +253,50 @@ fun TugasAct4Screen(modifier: Modifier) {
                                 colors = textFieldColors,
                                 singleLine = true
                             )
-                        }}}}}}}
+                        }
+                        // Experience (Dropdown Selection)
+                        Box(
+                            modifier = Modifier
+                                .weight(1f)
+                                .clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = null
+                                ) { isExpExpanded = true }
+                        ) {
+                            OutlinedTextField(
+                                value = experience,
+                                onValueChange = {},
+                                readOnly = true,
+                                label = { Text(stringResource(id = R.string.hint_experience)) },
+                                trailingIcon = {
+                                    IconButton(onClick = { isExpExpanded = true }) {
+                                        Icon(
+                                            painter = painterResource(id = R.drawable.ic_arrow_drop_down),
+                                            contentDescription = stringResource(id = R.string.desc_dropdown_icon)
+                                        )
+                                    }
+                                },
+                                modifier = Modifier.fillMaxWidth(),
+                                shape = fieldShape,
+                                colors = textFieldColors,
+                                singleLine = true
+                            )
+
+                            DropdownMenu(
+                                expanded = isExpExpanded,
+                                onDismissRequest = { isExpExpanded = false }
+                            ) {
+                                expOptions.forEach { option ->
+                                    DropdownMenuItem(
+                                        text = { Text(text = option) },
+                                        onClick = {
+                                            experience = option
+                                            isExpExpanded = false
+                                        }
+                                    )
+                                }
+                            }
+                        }
+                    }}}}}}
 
 
