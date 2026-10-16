@@ -184,6 +184,27 @@ fun TugasAct4Screen(modifier: Modifier) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.spacing_between_fields))
-                    ){} }}}}}
+                    )
+                    {
+                        OutlinedTextField(
+                            value = namaDepan,
+                            onValueChange = { namaDepan = it },
+                            label = { Text(stringResource(id = R.string.hint_nama_depan)) },
+                            modifier = Modifier.weight(1f),
+                            shape = fieldShape,
+                            colors = textFieldColors,
+                            singleLine = true
+                        )
+
+                        OutlinedTextField(
+                            value = namaBelakang,
+                            onValueChange = { namaBelakang = it },
+                            label = { Text(stringResource(id = R.string.hint_nama_belakang)) },
+                            modifier = Modifier.weight(1f),
+                            shape = fieldShape,
+                            colors = textFieldColors,
+                            singleLine = true
+                        )
+                    }}}}}}
 
 
