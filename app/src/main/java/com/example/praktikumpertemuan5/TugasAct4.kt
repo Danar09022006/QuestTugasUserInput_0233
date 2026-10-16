@@ -180,5 +180,10 @@ fun TugasAct4Screen(modifier: Modifier) {
                         focusedBorderColor = colorResource(id = R.color.purple_title),
                         unfocusedBorderColor = colorResource(id = R.color.gray_border)
                     )
+                    // Row 1: Nama Depan & Nama Belakang
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.spacing_between_fields))
+                    ){} }}}}}
 
 
