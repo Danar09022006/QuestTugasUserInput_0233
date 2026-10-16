@@ -205,6 +205,18 @@ fun TugasAct4Screen(modifier: Modifier) {
                             colors = textFieldColors,
                             singleLine = true
                         )
-                    }}}}}}
+                    }
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_between_fields)))
+
+                    // Row 2: Email
+                    OutlinedTextField(
+                        value = email,
+                        onValueChange = { email = it },
+                        label = { Text(stringResource(id = R.string.hint_email)) },
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = fieldShape,
+                        colors = textFieldColors,
+                        singleLine = true
+                    )}}}}}
 
 
