@@ -126,6 +126,15 @@ fun TugasAct4Screen(modifier: Modifier) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-        )}}
+        ) {
+            
+            Image(
+                painter = painterResource(id = R.drawable.bg_tampilan),
+                contentDescription = stringResource(id = R.string.desc_header_bg),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(dimensionResource(id = R.dimen.header_height)),
+                contentScale = ContentScale.Crop
+            )}}}
 
 
