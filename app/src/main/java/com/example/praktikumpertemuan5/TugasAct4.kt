@@ -83,11 +83,38 @@ fun TugasAct4Screen(modifier: Modifier) {
         listOf(expPemula, expMenengah, expAhli)
     }
 
-    // Auto dismiss pop up dialog after 5 seconds
+
     LaunchedEffect(showDialog) {
         if (showDialog) {
             delay(5.seconds)
             showDialog = false
+        }
+    }
+
+    if (showDatePicker) {
+        DatePickerDialog(
+            onDismissRequest = { showDatePicker = false },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        datePickerState.selectedDateMillis?.let { millis ->
+                            val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                            formatter.timeZone = TimeZone.getTimeZone("UTC")
+                            tglLahir = formatter.format(Date(millis))
+                        }
+                        showDatePicker = false
+                    }
+                ) {
+                    Text(stringResource(id = R.string.btn_ok))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showDatePicker = false }) {
+                    Text(stringResource(id = R.string.btn_cancel))
+                }
+            }
+        ) {
+            DatePicker(state = datePickerState)
         }
     }}
 
