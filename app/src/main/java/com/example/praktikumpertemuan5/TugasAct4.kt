@@ -224,6 +224,35 @@ fun TugasAct4Screen(modifier: Modifier) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.spacing_between_fields))
-                    ) {}}}}}}
+                    )
+                    {
+                        // Tgl Lahir (Clickable Field to open DatePicker)
+                        Box(
+                            modifier = Modifier
+                                .weight(1f)
+                                .clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = null
+                                ) { showDatePicker = true }
+                        ) {
+                            OutlinedTextField(
+                                value = tglLahir,
+                                onValueChange = {},
+                                readOnly = true,
+                                label = { Text(stringResource(id = R.string.hint_tgl_lahir)) },
+                                trailingIcon = {
+                                    IconButton(onClick = { showDatePicker = true }) {
+                                        Icon(
+                                            painter = painterResource(id = R.drawable.ic_calendar),
+                                            contentDescription = stringResource(id = R.string.desc_calendar_icon)
+                                        )
+                                    }
+                                },
+                                modifier = Modifier.fillMaxWidth(),
+                                shape = fieldShape,
+                                colors = textFieldColors,
+                                singleLine = true
+                            )
+                        }}}}}}}
 
 
