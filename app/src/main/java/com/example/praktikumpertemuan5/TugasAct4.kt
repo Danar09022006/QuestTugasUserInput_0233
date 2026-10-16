@@ -306,6 +306,14 @@ fun TugasAct4Screen(modifier: Modifier) {
                             fontWeight = FontWeight.Bold,
                             color = colorResource(id = R.color.text_black),
                             modifier = Modifier.align(Alignment.Start)
-                        )}}}}}}
+                        )
+                        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.margin_small)))
+
+                        // Checkboxes Row: Android, UI/UX, Web
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Start
+                        ) {}}}}}}}
 
 
