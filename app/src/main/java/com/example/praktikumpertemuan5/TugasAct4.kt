@@ -393,6 +393,27 @@ fun TugasAct4Screen(modifier: Modifier) {
                     }
                 }
             }
-        }}}
+
+            Button(
+                onClick = { showDialog = true },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(dimensionResource(id = R.dimen.button_height)),
+                shape = RoundedCornerShape(dimensionResource(id = R.dimen.button_corner_radius)),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = colorResource(id = R.color.gray_button_bg),
+                    contentColor = colorResource(id = R.color.gray_button_text)
+                )
+            ) {
+                Text(
+                    text = stringResource(id = R.string.btn_proceed),
+                    fontSize = dimensionResource(id = R.dimen.text_size_button).value.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+    }
+}
+
 
 
