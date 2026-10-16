@@ -217,6 +217,13 @@ fun TugasAct4Screen(modifier: Modifier) {
                         shape = fieldShape,
                         colors = textFieldColors,
                         singleLine = true
-                    )}}}}}
+                    )
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_between_fields)))
+
+                    // Row 3: Tgl Lahir & Experience
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.spacing_between_fields))
+                    ) {}}}}}}
 
 
