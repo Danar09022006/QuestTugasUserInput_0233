@@ -171,6 +171,14 @@ fun TugasAct4Screen(modifier: Modifier) {
                         fontSize = dimensionResource(id = R.dimen.text_size_subtitle).value.sp,
                         color = colorResource(id = R.color.gray_subtitle),
                         textAlign = TextAlign.Center
-                    )}}}}}
+                    )
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.margin_large)))
+
+
+                    val fieldShape = RoundedCornerShape(dimensionResource(id = R.dimen.input_corner_radius))
+                    val textFieldColors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = colorResource(id = R.color.purple_title),
+                        unfocusedBorderColor = colorResource(id = R.color.gray_border)
+                    )
 
 
