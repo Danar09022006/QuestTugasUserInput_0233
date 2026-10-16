@@ -127,7 +127,7 @@ fun TugasAct4Screen(modifier: Modifier) {
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            
+
             Image(
                 painter = painterResource(id = R.drawable.bg_tampilan),
                 contentDescription = stringResource(id = R.string.desc_header_bg),
@@ -135,6 +135,15 @@ fun TugasAct4Screen(modifier: Modifier) {
                     .fillMaxWidth()
                     .height(dimensionResource(id = R.dimen.header_height)),
                 contentScale = ContentScale.Crop
-            )}}}
+            )
+            // Floating Box component floating on top of Scaffold background
+            Surface(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = dimensionResource(id = R.dimen.card_top_offset)),
+                shape = RoundedCornerShape(
+                    topStart = dimensionResource(id = R.dimen.card_corner_top),
+                    topEnd = dimensionResource(id = R.dimen.card_corner_top),
+                ),
 
 
