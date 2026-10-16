@@ -154,6 +154,14 @@ fun TugasAct4Screen(modifier: Modifier) {
                         .padding(dimensionResource(id = R.dimen.card_padding))
                         .verticalScroll(rememberScrollState()),
                     horizontalAlignment = Alignment.CenterHorizontally
-                ) {}}}}}
+                ) {
+                    // Form Title
+                    Text(
+                        text = stringResource(id = R.string.form_title),
+                        fontSize = dimensionResource(id = R.dimen.text_size_title).value.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = colorResource(id = R.color.purple_title),
+                        textAlign = TextAlign.Center
+                    )}}}}}
 
 
