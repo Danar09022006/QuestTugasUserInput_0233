@@ -415,5 +415,22 @@ fun TugasAct4Screen(modifier: Modifier) {
     }
 }
 
+val namaLengkap = "$namaDepan $namaBelakang".trim()
+Row(verticalAlignment = Alignment.CenterVertically) {
+    Text(
+        text = stringResource(id = R.string.label_nama_lengkap),
+        fontWeight = FontWeight.Bold,
+        color = colorResource(id = R.color.white),
+        fontSize = dimensionResource(id = R.dimen.text_size_label).value.sp
+    )
+    Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen.margin_small)))
+    Text(
+        text = namaLengkap.ifEmpty { stringResource(id = R.string.skill_none) },
+        color = colorResource(id = R.color.white),
+        fontSize = dimensionResource(id = R.dimen.text_size_input).value.sp
+    )
+}
+
+Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.margin_small)))
 
 
