@@ -314,6 +314,25 @@ fun TugasAct4Screen(modifier: Modifier) {
                             modifier = Modifier.fillMaxWidth(),
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.Start
-                        ) {}}}}}}}
+                        )   {
+
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.weight(1f)
+                            ) {
+                                Checkbox(
+                                    checked = isAndroidSelected,
+                                    onCheckedChange = { isAndroidSelected = it },
+                                    colors = CheckboxDefaults.colors(
+                                        checkedColor = colorResource(id = R.color.purple_title)
+                                    )
+                                )
+                                Text(
+                                    text = stringResource(id = R.string.skill_android),
+                                    fontSize = dimensionResource(id = R.dimen.text_size_subtitle).value.sp,
+                                    color = colorResource(id = R.color.text_dark_gray)
+                                )
+                            }
+                        }}}}}}}
 
 
