@@ -145,5 +145,15 @@ fun TugasAct4Screen(modifier: Modifier) {
                     topStart = dimensionResource(id = R.dimen.card_corner_top),
                     topEnd = dimensionResource(id = R.dimen.card_corner_top),
                 ),
+                color = colorResource(id = R.color.white),
+                shadowElevation = dimensionResource(id = R.dimen.card_elevation)
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(dimensionResource(id = R.dimen.card_padding))
+                        .verticalScroll(rememberScrollState()),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {}}}}}
 
 
