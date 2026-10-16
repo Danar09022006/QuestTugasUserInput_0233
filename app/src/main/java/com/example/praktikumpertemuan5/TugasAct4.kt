@@ -81,6 +81,14 @@ fun TugasAct4Screen(modifier: Modifier) {
     val expAhli = stringResource(id = R.string.exp_ahli)
     val expOptions = remember(expPemula, expMenengah, expAhli) {
         listOf(expPemula, expMenengah, expAhli)
+    }
+
+    // Auto dismiss pop up dialog after 5 seconds
+    LaunchedEffect(showDialog) {
+        if (showDialog) {
+            delay(5.seconds)
+            showDialog = false
+        }
     }}
 
 
