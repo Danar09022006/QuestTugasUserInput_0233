@@ -164,6 +164,13 @@ fun TugasAct4Screen(modifier: Modifier) {
                         textAlign = TextAlign.Center
                     )
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.margin_extra_small)))
-                }}}}}
+
+                    // Form Subtitle
+                    Text(
+                        text = stringResource(id = R.string.form_subtitle),
+                        fontSize = dimensionResource(id = R.dimen.text_size_subtitle).value.sp,
+                        color = colorResource(id = R.color.gray_subtitle),
+                        textAlign = TextAlign.Center
+                    )}}}}}
 
 
