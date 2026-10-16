@@ -162,6 +162,8 @@ fun TugasAct4Screen(modifier: Modifier) {
                         fontWeight = FontWeight.Bold,
                         color = colorResource(id = R.color.purple_title),
                         textAlign = TextAlign.Center
-                    )}}}}}
+                    )
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.margin_extra_small)))
+                }}}}}
 
 
