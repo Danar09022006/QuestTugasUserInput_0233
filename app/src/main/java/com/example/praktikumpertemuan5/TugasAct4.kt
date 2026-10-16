@@ -297,6 +297,15 @@ fun TugasAct4Screen(modifier: Modifier) {
                                 }
                             }
                         }
-                    }}}}}}
+                        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_between_sections)))
+
+
+                        Text(
+                            text = stringResource(id = R.string.label_pilih_skill),
+                            fontSize = dimensionResource(id = R.dimen.text_size_label).value.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = colorResource(id = R.color.text_black),
+                            modifier = Modifier.align(Alignment.Start)
+                        )}}}}}}
 
 
