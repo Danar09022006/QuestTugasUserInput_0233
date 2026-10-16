@@ -116,6 +116,16 @@ fun TugasAct4Screen(modifier: Modifier) {
         ) {
             DatePicker(state = datePickerState)
         }
-    }}
+    }
+
+    Scaffold(
+        modifier = Modifier.fillMaxSize()
+    ) { innerPadding ->
+        // Root container for Scaffold content
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+        )}}
 
 
