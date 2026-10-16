@@ -352,6 +352,27 @@ fun TugasAct4Screen(modifier: Modifier) {
                                     color = colorResource(id = R.color.text_dark_gray)
                                 )
                             }
-                        }}}}}}}
+                            // Skill 3: Web
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.weight(1f)
+                            ) {
+                                Checkbox(
+                                    checked = isWebSelected,
+                                    onCheckedChange = { isWebSelected = it },
+                                    colors = CheckboxDefaults.colors(
+                                        checkedColor = colorResource(id = R.color.purple_title)
+                                    )
+                                )
+                                Text(
+                                    text = stringResource(id = R.string.skill_web),
+                                    fontSize = dimensionResource(id = R.dimen.text_size_subtitle).value.sp,
+                                    color = colorResource(id = R.color.text_dark_gray)
+                                )
+                            }
+                        }
+
+                        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.margin_large)))
+                    }}}}}}
 
 
