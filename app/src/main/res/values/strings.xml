@@ -16,4 +16,22 @@
     <string name="desc_header_bg">Header Background Image</string>
     <string name="desc_calendar_icon">Calendar Icon</string>
     <string name="desc_dropdown_icon">Dropdown Icon</string>
+
+    <!-- Experience Options -->
+    <string name="exp_pemula">Pemula</string>
+    <string name="exp_menengah">Menengah</string>
+    <string name="exp_ahli">Ahli/Senior</string>
+
+    <!-- DatePicker Strings -->
+    <string name="btn_ok">OK</string>
+    <string name="btn_cancel">Batal</string>
+
+    <!-- Pop Up Dialog Strings -->
+    <string name="dialog_title">Preview Data Biodata</string>
+    <string name="label_nama_lengkap">Nama Lengkap :</string>
+    <string name="label_email">Email :</string>
+    <string name="label_tgl_lahir">Tanggal Lahir :</string>
+    <string name="label_experience">Experience :</string>
+    <string name="label_skill_result">Skill Anda :</string>
+    <string name="skill_none">-</string>
 </resources>
